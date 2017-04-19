@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lihao.news.activity.MainActivity">
+
+    <com.lihao.news.customview.NoScrollViewPager
+        android:id="@+id/main_vp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </com.lihao.news.customview.NoScrollViewPager>
+
+    <RadioGroup
+        android:background="@drawable/bottom_tab_bg"
+        android:id="@+id/main_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="3dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/home"
+            style="@style/rb_radio_button"
+            android:drawableTop="@drawable/rb_home_drawable_select"
+            android:text="主页"
+            />
+
+        <RadioButton
+            android:id="@+id/news"
+            style="@style/rb_radio_button"
+            android:drawableTop="@drawable/rb_news_drawable_select"
+            android:text="新闻"/>
+
+        <RadioButton
+            android:id="@+id/shopping"
+            style="@style/rb_radio_button"
+            android:drawableTop="@drawable/rb_shoping_drawable_select"
+            android:text="购物"/>
+
+        <RadioButton
+            android:id="@+id/government"
+            style="@style/rb_radio_button"
+            android:drawableTop="@drawable/rb_government_drawable_select"
+            android:text="政要"/>
+
+        <RadioButton
+            android:id="@+id/setting"
+            style="@style/rb_radio_button"
+            android:drawableTop="@drawable/rb_setting_drawable_select"
+            android:text="设置"/>
+    </RadioGroup>
+
+</LinearLayout>
