@@ -45,7 +45,7 @@ public class NewsDetailData {
         private String countcommenturl;
         private String more;
         private String title;
-        private List<?> news;
+        private List<NewsBean> news;
         private List<?> topic;
         private List<TopnewsBean> topnews;
 
@@ -73,11 +73,11 @@ public class NewsDetailData {
             this.title = title;
         }
 
-        public List<?> getNews() {
+        public List<NewsBean> getNews() {
             return news;
         }
 
-        public void setNews(List<?> news) {
+        public void setNews(List<NewsBean> news) {
             this.news = news;
         }
 
@@ -190,6 +190,107 @@ public class NewsDetailData {
 
             public void setUrl(String url) {
                 this.url = url;
+            }
+        }
+        public static class NewsBean{
+            @Override
+            public boolean equals(Object obj) {
+                NewsBean b = (NewsBean) obj;
+                return this.getId()==b.getId();
+            }
+
+            /**
+             * id : 147314
+             * title : 徒步登高欣赏京城第一片红叶
+             * url : /static/html/2015/10/20/714C6E50486D197B6F257C45.html
+             * listimage : /static/images/2015/10/20/3/1420927604KB07.jpg
+             * pubdate : 2015-10-20 09:37
+             * comment : true
+             * commenturl : /client/user/newComment/147314
+             * type : news
+             * commentlist : /static/api/news/10012/14/147314/comment_1.json
+             */
+
+            private int id;
+            private String title;
+            private String url;
+            private String listimage;
+            private String pubdate;
+            private boolean comment;
+            private String commenturl;
+            private String type;
+            private String commentlist;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public String getListimage() {
+                return listimage;
+            }
+
+            public void setListimage(String listimage) {
+                this.listimage = listimage;
+            }
+
+            public String getPubdate() {
+                return pubdate;
+            }
+
+            public void setPubdate(String pubdate) {
+                this.pubdate = pubdate;
+            }
+
+            public boolean isComment() {
+                return comment;
+            }
+
+            public void setComment(boolean comment) {
+                this.comment = comment;
+            }
+
+            public String getCommenturl() {
+                return commenturl;
+            }
+
+            public void setCommenturl(String commenturl) {
+                this.commenturl = commenturl;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public String getCommentlist() {
+                return commentlist;
+            }
+
+            public void setCommentlist(String commentlist) {
+                this.commentlist = commentlist;
             }
         }
     }

@@ -8,13 +8,17 @@ import android.content.SharedPreferences;
  */
 
 public class CacheUtil {
-    public static void putString(Context context,String key,String values){
+    public static void putStringToSp(Context context,String key,String values){
         SharedPreferences sp = context.getSharedPreferences("cache", Context.MODE_PRIVATE);
         sp.edit().putString(key,values).commit();
     }
 
-    public static String getString(Context context,String key,String values){
+    public static String getStringFromSp(Context context,String key,String values){
         SharedPreferences sp = context.getSharedPreferences("cache", Context.MODE_PRIVATE);
         return sp.getString(key,values);
     }
+
+
+
+
 }

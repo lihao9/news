@@ -2,6 +2,7 @@ package com.lihao.news;
 
 import android.app.Application;
 
+
 import org.xutils.x;
 
 /**
@@ -10,9 +11,11 @@ import org.xutils.x;
 
 public class MyApplication extends Application {
 
+
     @Override
     public void onCreate() {
-        x.Ext.init(this);
         super.onCreate();
+        x.Ext.init(this);
     }
+
 }

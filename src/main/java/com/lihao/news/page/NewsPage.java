@@ -54,11 +54,12 @@ public class NewsPage extends BasePage implements View.OnClickListener {
         //新闻页面，显示进入侧滑菜单
         mIbMune.setVisibility(View.VISIBLE);
         mIbMune.setOnClickListener(this);
+        mTvTitle.setText("新闻中心");
         //为各个子页面获取数据并设置数据
         LogUtil.e("新闻页面初始化了");
 
         //xUtils联网请求数据
-        String cacheData = CacheUtil.getString(context,"newsData","");
+        String cacheData = CacheUtil.getStringFromSp(context,"newsData","");
         if (!TextUtils.isEmpty(cacheData)){
             processData(cacheData);
         }else {
@@ -68,7 +69,7 @@ public class NewsPage extends BasePage implements View.OnClickListener {
                 public void onSuccess(String result) {
                     LogUtil.i("请求数据成功"+result);
                     if (result!=null&&!"".equals(result)){
-                        CacheUtil.putString(context,"newsData",result);
+                        CacheUtil.putStringToSp(context,"newsData",result);
                         //处理json数据
                         processData(result);
                     }
@@ -106,8 +107,21 @@ public class NewsPage extends BasePage implements View.OnClickListener {
     private void swichMenuPage(int position) {
         if (position<mMenuBasePages.size()) {
             mFl.removeAllViews();
+            mTvTitle.setText(data.get(position).getTitle());
             mMenuBasePages.get(position).initData();
             mFl.addView(mMenuBasePages.get(position).rootView);
+            if (position==2){
+                ibSwichListGrid.setVisibility(View.VISIBLE);
+                final MenuImagePage imagepager = (MenuImagePage) mMenuBasePages.get(position);
+                ibSwichListGrid.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        imagepager.swithImageShowDOme(ibSwichListGrid);
+                    }
+                });
+            }else {
+                ibSwichListGrid.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -130,10 +144,9 @@ public class NewsPage extends BasePage implements View.OnClickListener {
             activity.getSlidingMune().setMenu(view);
             listview.setOnItemClickListener(new MyOnItemClickListener());
 
-
             //当数据获取完毕后向集合中添加各菜单项页面的实例
             mMenuBasePages.add(new MenuNewsPage(context, data.get(0)));
-            mMenuBasePages.add(new MenuSpecialPage(context,data.get(1)));
+            mMenuBasePages.add(new MenuSpecialPage(context,data.get(0)));
             mMenuBasePages.add(new MenuImagePage(context,data.get(2)));
             mMenuBasePages.add(new MenuInteractionPage(context,data.get(3)));
             swichMenuPage(prePosition);

@@ -4,7 +4,7 @@
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
-    <include layout="@layout/title_layout"/>
+    <include layout="@layout/title_layout" android:id="@+id/top_bar"/>
 
     <FrameLayout
         android:id="@+id/fl_content"
